@@ -1,0 +1,607 @@
+{
+  "currencies": [
+    "USDT",
+    "BTC",
+    "ETH"
+  ],
+  "assets": [
+    "BTC",
+    "ETH",
+    "TT",
+    "EOS",
+    "BCH",
+    "PXG",
+    "LBA",
+    "TRX",
+    "IOTX",
+    "MXC",
+    "IOTA",
+    "NEO",
+    "GAS",
+    "ONT",
+    "ONG",
+    "ZORO",
+    "ITC",
+    "PCX",
+    "ALGO",
+    "BNB",
+    "VOL",
+    "LTC",
+    "QKC",
+    "UPX",
+    "DAPPT",
+    "DLX",
+    "VSYS",
+    "EGT",
+    "FLDT",
+    "RRB",
+    "VEC",
+    "CELA",
+    "PLG",
+    "CKB",
+    "ZEL",
+    "VNS",
+    "EDG",
+    "DILI",
+    "BPOP",
+    "LAMB",
+    "PRO",
+    "STC",
+    "TOP",
+    "COS",
+    "KAVA",
+    "ANKR"
+  ],
+  "markets": [
+    {
+      "pair": [
+        "USDT",
+        "BTC"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.01
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ETH"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.01
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "ETH"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "TT"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.00001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "EOS"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "BCH"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.01
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "PXG"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.00001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "LBA"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "TRX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "IOTX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "MXC"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "IOTX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "ETH",
+        "IOTX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "IOTA"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "IOTA"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "NEO"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "NEO"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "GAS"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 1e-7
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "ONT"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "ONG"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ONT"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "PXG"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ZORO"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.00001
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "ITC"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ITC"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "PCX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ALGO"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "BNB"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "VOL"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "LTC"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.01
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "QKC"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "QKC"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "UPX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "DAPPT"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "DLX"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "VSYS"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.00001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "EGT"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "FLDT"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "RRB"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "VEC"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "CELA"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.00001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "PLG"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "CKB"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ZEL"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.00001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "VNS"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "ETH",
+        "EDG"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "DILI"
+      ],
+      "minimalOrder": {
+        "amount": 0.001,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "BPOP"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "LAMB"
+      ],
+      "minimalOrder": {
+        "amount": 0.00001,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "PRO"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "STC"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "TOP"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.000001
+      }
+    },
+    {
+      "pair": [
+        "BTC",
+        "COS"
+      ],
+      "minimalOrder": {
+        "amount": 1,
+        "price": 1e-8
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "KAVA"
+      ],
+      "minimalOrder": {
+        "amount": 0.0001,
+        "price": 0.0001
+      }
+    },
+    {
+      "pair": [
+        "USDT",
+        "ANKR"
+      ],
+      "minimalOrder": {
+        "amount": 0.01,
+        "price": 0.000001
+      }
+    }
+  ]
+}
