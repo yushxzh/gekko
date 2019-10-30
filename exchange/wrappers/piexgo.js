@@ -7,7 +7,7 @@ const exchangeUtils = require('../exchangeUtils');
 const retry = exchangeUtils.retry;
 const scientificToDecimal = exchangeUtils.scientificToDecimal;
 
-const ExchangeApi = require('../piexgo-api');
+const {ExchangeApi} = require('../piexgo-api');
 
 function req(exchangeApi, method, json, callback) {
   const fetch = async cb => {

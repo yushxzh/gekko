@@ -2,11 +2,13 @@ const r2 = require('r2');
 const crypto = require('crypto');
 const ENDPOINT = 'https://api.piexgo.com';
 
-function sign(signer, msg) {
+function sign(secret, msg) {
+  const signer = crypto.createHmac('sha512', secret);
   return signer.update(msg).digest('hex');
 }
 
-function signObj(signer, obj) {
+function signObj(secret, obj) {
+  const signer = crypto.createHmac('sha512', secret);
   const qstring = Object.keys(obj).sort().reduce((ret, key) => {
     ret += `${key}=${obj[key]}&`;
     return ret;
@@ -31,12 +33,10 @@ class ExchangeApi {
     handleDrift = true
   }) {
     this.key = key;
+    this.secret = secret;
     this.recvWindow = recvWindow;
     this.disableBeautification = disableBeautification;
     this.handleDrift = handleDrift;
-    if (secret) {
-      this.signer = crypto.createHmac('sha256', secret);
-    }
   }
 
   async symbols() {
@@ -50,7 +50,7 @@ class ExchangeApi {
   }
 
   async account() {
-    const signature = sign(this.signer, '');
+    const signature = sign(this.secret, '');
     const headers = {
       KEY: this.key,
       signature
@@ -65,7 +65,7 @@ class ExchangeApi {
   }
 
   async cancelOrder(req) {
-    const signature = signObj(this.signer, req);
+    const signature = signObj(this.secret, req);
     const headers = {
       KEY: this.key,
       signature
@@ -75,7 +75,7 @@ class ExchangeApi {
   }
 
   async orderInfo(req) {
-    const signature = signObj(this.signer, req);
+    const signature = signObj(this.secret, req);
     const headers = {
       KEY: this.key,
       signature
@@ -85,7 +85,7 @@ class ExchangeApi {
   }
 
   async order(req) {
-    const signature = signObj(this.signer, req);
+    const signature = signObj(this.secret, req);
     const headers = {
       KEY: this.key,
       signature
@@ -95,4 +95,9 @@ class ExchangeApi {
   }
 }
 
-module.exports = ExchangeApi;
+module.exports = {
+  ExchangeApi,
+  sign,
+  signObj,
+  qs
+};
