@@ -191,14 +191,14 @@ Trader.prototype.getPortfolio = function(callback) {
 };
 
 Trader.prototype.getFee = function(callback) {
-  this.fee = 0.0005; // marker fee
+  this.fee = 0; // marker fee
   callback(null, this.fee);
 };
 
 Trader.prototype.getTicker = function(callback) {
   return req(
     this.exchangeApi,
-    'orderTicker',
+    'orderBook',
     {symbol: this.pair},
     (err, res) => {
       if (err) return callback(err);
@@ -248,6 +248,8 @@ Trader.prototype.isValidPrice = function(price) {
 };
 
 Trader.prototype.isValidLot = function(price, amount) {
+  console.log("price*amount"+amount * price);
+  console.log("order"+this.market.minimalOrder.order);
   return amount * price >= this.market.minimalOrder.order;
 };
 
@@ -278,6 +280,7 @@ Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
     },
     (err, res) => {
       if (err) return callback(err);
+      console.table(res);
       callback(null, res.order_id);
     }
   );
