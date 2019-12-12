@@ -7,7 +7,7 @@ const exchangeUtils = require('../exchangeUtils');
 const retry = exchangeUtils.retry;
 const scientificToDecimal = exchangeUtils.scientificToDecimal;
 
-const {ExchangeApi} = require('../piexgo-api');
+const { ExchangeApi } = require('../piexgo-api');
 
 function req(exchangeApi, method, json, callback) {
   const fetch = async cb => {
@@ -27,7 +27,7 @@ const Trader = function(config) {
     'roundAmount',
     'roundPrice',
     'isValidPrice',
-    'isValidLot'
+    'isValidLot',
   ]);
 
   if (_.isObject(config)) {
@@ -51,7 +51,7 @@ const Trader = function(config) {
     timeout: 15000,
     recvWindow: this.recvWindow,
     disableBeautification: false,
-    handleDrift: true
+    handleDrift: true,
   });
 
   if (config.key && config.secret) {
@@ -137,7 +137,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
   return req(
     this.exchangeApi,
     'getTrades',
-    {symbol: this.pair},
+    { symbol: this.pair },
     (err, res) => {
       if (err) return callback(err);
       var parsedTrades = [];
@@ -148,10 +148,10 @@ Trader.prototype.getTrades = function(since, callback, descending) {
             tid: trade.time, // todo, impl more stable trade id
             date: moment(trade.time).unix(),
             price: parseFloat(trade.price),
-            amount: parseFloat(trade.vol)
+            amount: parseFloat(trade.vol),
           });
         },
-        this
+        this,
       );
       if (descending) callback(null, parsedTrades.reverse());
       else callback(null, parsedTrades);
@@ -182,11 +182,11 @@ Trader.prototype.getPortfolio = function(callback) {
 
       const portfolio = [
         { name: this.asset, amount: assetAmount },
-        { name: this.currency, amount: currencyAmount }
+        { name: this.currency, amount: currencyAmount },
       ];
 
       return callback(null, portfolio);
-    }
+    },
   );
 };
 
@@ -199,15 +199,15 @@ Trader.prototype.getTicker = function(callback) {
   return req(
     this.exchangeApi,
     'orderBook',
-    {symbol: this.pair},
+    { symbol: this.pair },
     (err, res) => {
       if (err) return callback(err);
       const ticker = {
         bid: parseFloat(res.bids[0].price),
-        ask: parseFloat(res.asks[0].price)
+        ask: parseFloat(res.asks[0].price),
       };
       callback(null, ticker);
-    }
+    },
   );
 };
 
@@ -216,7 +216,10 @@ Trader.prototype.getPrecision = function(tickSize) {
   if (!isFinite(tickSize)) return 0;
   let e = 1;
   let p = 0;
-  while (Math.round(tickSize * e) / e !== tickSize) { e *= 10; p++; }
+  while (Math.round(tickSize * e) / e !== tickSize) {
+    e *= 10;
+    p++;
+  }
   return p;
 };
 
@@ -248,8 +251,6 @@ Trader.prototype.isValidPrice = function(price) {
 };
 
 Trader.prototype.isValidLot = function(price, amount) {
-  console.log("price*amount"+amount * price);
-  console.log("order"+this.market.minimalOrder.order);
   return amount * price >= this.market.minimalOrder.order;
 };
 
@@ -266,6 +267,9 @@ Trader.prototype.outbidPrice = function(price, isUp) {
 };
 
 Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
+  amount = this.roundAmount(amount * 0.002);
+  console.log("addOrder");
+  console.log(amount);
   return req(
     this.exchangeApi,
     'order',
@@ -276,13 +280,13 @@ Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
       symbol: this.pair,
       type: 'LIMIT',
       timestamp: new Date().getTime(),
-      recv_window: this.recvWindow
+      recv_window: this.recvWindow,
     },
     (err, res) => {
       if (err) return callback(err);
       console.table(res);
       callback(null, res.order_id);
-    }
+    },
   );
 };
 
@@ -290,31 +294,31 @@ Trader.prototype.getOrder = function(order, callback) {
   return req(
     this.exchangeApi,
     'orderInfo',
-    {symbol: this.pair, order_id: order},
+    { symbol: this.pair, order_id: order },
     (err, res) => {
       if (err) return callback(err);
 
       let price = 0;
       let amount = 0;
       let date = moment(0);
-      if (res.data.status === 0) { // pending
-        return callback(null, {price, amount, date});
+      if (res.order.status === 0) { // pending
+        return callback(null, { price, amount, date });
       }
-      const fee = parseFloat(res.data.fee);
-      price = parseFloat(res.data.price);
-      amount = parseFloat(res.data.filled_volume);
+      const fee = parseFloat(res.order.fee);
+      price = parseFloat(res.order.price);
+      amount = parseFloat(res.order.filled_volume);
 
       const fees = {
-        [this.currency]: fee
+        [this.currency]: fee,
       };
       callback(err, {
         price,
         amount,
-        date: moment(res.data.update_time),
+        date: moment(res.order.update_time),
         fees,
-        feePercent: Math.round(fee / (price * amount) * 100)
+        feePercent: Math.round(fee / (price * amount) * 100),
       });
-    }
+    },
   );
 };
 
@@ -330,13 +334,13 @@ Trader.prototype.checkOrder = function(order, callback) {
   return req(
     this.exchangeApi,
     'orderInfo',
-    {symbol: this.pair, order_id: order},
+    { symbol: this.pair, order_id: order },
     (err, res) => {
       if (err) {
         return callback(err);
       }
-      const status = res.data.status;
-      const filledAmount = parseFloat(res.data.filled_volume);
+      const status = res.order.status;
+      const filledAmount = parseFloat(res.order.filled_volume);
       if (status === 2) { // done
         return callback(null, { executed: true, open: false });
       }
@@ -353,7 +357,7 @@ Trader.prototype.checkOrder = function(order, callback) {
       }
       console.log('what status?', status);
       throw status;
-    }
+    },
   );
 };
 
@@ -365,7 +369,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
       symbol: this.pair,
       order_id: order,
       recv_window: this.recvWindow,
-      timestamp: new Date().getTime()
+      timestamp: new Date().getTime(),
     },
     (err, res) => {
       this.oldOrder = order;
@@ -376,7 +380,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
         return callback(null, true);
       }
       return callback(null, false);
-    }
+    },
   );
 };
 
@@ -393,7 +397,7 @@ Trader.getCapabilities = function() {
     tid: 'tid',
     tradable: true,
     gekkoBroker: 0.6,
-    limitedCancelConfirmation: true
+    limitedCancelConfirmation: true,
   };
 };
 

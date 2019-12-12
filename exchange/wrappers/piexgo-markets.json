@@ -5,6 +5,7 @@
     "ETH"
   ],
   "assets": [
+    "UPX",
     "BTC",
     "ETH",
     "TT",
@@ -28,7 +29,6 @@
     "VOL",
     "LTC",
     "QKC",
-    "UPX",
     "DAPPT",
     "DLX",
     "VSYS",
@@ -260,7 +260,8 @@
       ],
       "minimalOrder": {
         "amount": 0.0001,
-        "price": 0.0001
+        "price": 0.0001,
+        "order": 1
       }
     },
     {
@@ -380,7 +381,8 @@
       ],
       "minimalOrder": {
         "amount": 0.01,
-        "price": 0.000001
+        "price": 0.000001,
+        "order": 5000
       }
     },
     {

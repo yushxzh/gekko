@@ -74,6 +74,8 @@ class ExchangeApi {
       method: 'POST',
       headers: headers,
     };
+    console.log("account req");
+    console.table(options);
     return await fetch(`${ENDPOINT}/api/v1/account`, options).then(response => {
       return response.json();
     });
@@ -101,6 +103,7 @@ class ExchangeApi {
       body: params,
       headers: headers,
     };
+    console.log("order req");
     console.table(options);
     return await fetch(`${ENDPOINT}/api/v1/order`, options).then(response => {
       return response.json();

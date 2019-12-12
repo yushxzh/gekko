@@ -2,8 +2,8 @@ const { ExchangeApi, sign, signObj, qs } = require('../../exchange/piexgo-api');
 const { should, expect } = require('chai');
 
 const API_KEYS = {
-  key: '2adf4a83-30a2-42ea-b763-bc2b9c6aa54f',
-  secret: '2380fc8b84e5aba7ca1948fa53f469c7d855f4ec',
+  key: '13740317-122b-473d-9614-34f17221d25e',
+  secret: '0a6c37b9e4173a68c75a25facc39f8a36fc20881',
 };
 
 describe('exchange/piexgo', function() {
@@ -39,14 +39,14 @@ describe('exchange/piexgo', function() {
   //   expect(sig).to.be.equal('fc3729658558e0ca42c12c46b94feb269cdf3d87c4a649896c457472b4e4ab4ec1640b0882d5de9a33ed282c33bc171c95f3315b95b578fd64f87bde4ce945cd');
   // });
   //
-  // it('piexgo-api/symbols should work', function() {
-  //   const res = exchangeApi.symbols();
-  //   res.then(function(result) {
-  //     expect(result.data).to.be.not.empty;
-  //     console.log('====symbols===');
-  //     console.table(result.data);
-  //   });
-  // });
+  it('piexgo-api/symbols should work', function() {
+    const res = exchangeApi.symbols();
+    res.then(function(result) {
+      expect(result.data).to.be.not.empty;
+      console.log('====symbols===');
+      console.table(result.data);
+    });
+  });
   //
   // it('piexgo-api/time should work', function() {
   //   const res = exchangeApi.time();
@@ -70,14 +70,14 @@ describe('exchange/piexgo', function() {
   //   });
   // });
   //
-  // it('piexgo-api/account should work', function() {
-  //   const res = exchangeApi.account();
-  //   res.then(function(result) {
-  //     expect(result.data).to.be.not.empty;
-  //     console.log('====account===');
-  //     console.table(result.data);
-  //   });
-  // });
+  it('piexgo-api/account should work', function() {
+    const res = exchangeApi.account();
+    res.then(function(result) {
+      expect(result.data).to.be.not.empty;
+      console.log('====account===');
+      console.table(result.data);
+    });
+  });
   //
   // it('piexgo-api/orderBook should work', function() {
   //   const req = {
@@ -113,18 +113,18 @@ describe('exchange/piexgo', function() {
   // it('piexgo-api/orderInfo should work', function() {
   //   const req = new URLSearchParams();
   //   req.append('symbol', 'UPX_USDT');
-  //   req.append('order_id', '1204163223927074817');
+  //   req.append('order_id', '1182855211073490945');
   //   const res = exchangeApi.orderInfo(req);
   //   res.then(function(data) {
   //     console.log('====orderInfo===');
   //     console.table(data);
   //   });
   // });
-  //
+
   // it('piexgo-api/cancelOrder should work', function() {
   //   const req = new URLSearchParams();
   //   req.append('symbol', 'UPX_USDT');
-  //   req.append('order_id', '1204163223927074817');
+  //   req.append('order_id', '1204839746816397313');
   //   req.append('recv_window', 5000);
   //   req.append('timestamp', new Date().getTime());
   //   const res = exchangeApi.cancelOrder(req);
@@ -142,17 +142,18 @@ describe('exchange/piexgo', function() {
   //   res.then(function(data) {
   //     console.log('====openOrders===');
   //     console.table(data);
+  //     console.table(data.list);
   //   });
   // });
-  it('piexgo-api/tradeOrderHistory should work', function() {
-    const req = {
-      page: '0',
-    };
-    const res = exchangeApi.tradeOrderHistory(req);
-    res.then(function(data) {
-      console.log('====tradeOrderHistory===');
-      console.table(data);
-    });
-  });
+  // it('piexgo-api/tradeOrderHistory should work', function() {
+  //   const req = {
+  //     page: '0',
+  //   };
+  //   const res = exchangeApi.tradeOrderHistory(req);
+  //   res.then(function(data) {
+  //     console.log('====tradeOrderHistory===');
+  //     console.table(data);
+  //   });
+  // });
 
 });
